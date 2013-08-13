@@ -22,7 +22,7 @@ Assuming you have an attribute time_zone in your User model:
 
     class User < ActiveRecord::Base
       include HasZone
-      has_zone with: time_zone
+      has_zone with: :time_zone
     end
 
 Then you can use the time zone with:
