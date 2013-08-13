@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = HasZone::VERSION
   spec.authors       = ["Jerry Luk"]
   spec.email         = ["jerryluk@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Provides a way to convert from TZinfo time zone identifer to ActiveSupport TimeZone for your Rails application.}
+  spec.summary       = %q{Provides a way to convert from TZinfo time zone identifer to ActiveSupport TimeZone for your Rails application.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
