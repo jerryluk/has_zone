@@ -1,0 +1,3 @@
+module HasZone
+  VERSION = "0.0.1"
+end
