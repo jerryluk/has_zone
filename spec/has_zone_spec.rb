@@ -3,6 +3,7 @@ require 'spec_helper'
 describe HasZone do
   class Resource
     include ActiveModel::Validations
+    include ActiveModel::Validations::Callbacks
     include HasZone
     attr_accessor :time_zone
     has_zone with: :time_zone
@@ -42,6 +43,12 @@ describe HasZone do
     resource.zone = zone
     resource.zone.should == "Pacific Time (US & Canada)"
     resource.time_zone.should == "America/Los_Angeles"
+  end
+
+  it "sets UTC time zone to Etc/UTC" do
+    resource.time_zone = "UTC"
+    resource.should be_valid
+    resource.time_zone.should == "Etc/UTC"
   end
 
 end

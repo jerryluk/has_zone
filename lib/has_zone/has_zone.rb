@@ -3,8 +3,6 @@ module HasZone
 
   included do
 
-    validates_inclusion_of :time_zone, in: ::ActiveSupport::TimeZone.tzids_map.keys, allow_blank: true, if: :time_zone_changed?
-
     # This allows the model has the ability to store TimeZone.
     # Usage:
     # has_zone with: :time_zone
@@ -36,6 +34,14 @@ module HasZone
         @zone = nil
         write_attribute(options[:with], tz)
       end
+
+      define_method(:set_utc_time_zone) do
+        send "#{options[:with]}=".to_sym, "Etc/UTC" if send(options[:with]) == "UTC"
+      end
+
+      before_validation :set_utc_time_zone
+      validates_inclusion_of options[:with], in: ::ActiveSupport::TimeZone.tzids_map.keys, allow_blank: true
+
     end
   end
 
