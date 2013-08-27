@@ -51,4 +51,10 @@ describe HasZone do
     resource.time_zone.should == "Etc/UTC"
   end
 
+  it "sets time zone to nil if the time zone is not recognized" do
+    resource.time_zone = "Bogus"
+    resource.should be_valid
+    resource.zone.should be_nil
+  end
+
 end
