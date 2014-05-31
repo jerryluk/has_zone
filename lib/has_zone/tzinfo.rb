@@ -49,7 +49,7 @@ class ActiveSupport::TimeZone
   def self.tzids_map
     @tzids_map ||= begin
       (tzids_map = {}).tap do |tm|
-        zones_map.each { |n, z| tm[z.identifier] ||= z }
+        zones_map.each_pair { |n, z| tm[z.identifier] ||= z }
       end
     end
   end
